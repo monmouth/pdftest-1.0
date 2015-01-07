@@ -37,7 +37,7 @@ private PDDocument doc ;
 				page++;
 			}
 		} catch (Exception e) {
-			System.out.println("print out pdf text fails ! " +  e);
+			e.printStackTrace();
 		} finally {
 			if (out != null) {
 				out.close();

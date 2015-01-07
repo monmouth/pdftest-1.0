@@ -12,6 +12,7 @@ import com.itextpdf.text.pdf.parser.SimpleTextExtractionStrategy;
 import com.itextpdf.text.pdf.parser.TextExtractionStrategy;
 
 /**
+ *以itext做為讀取資料用的Library並 逐頁讀取PDF內容.
  * @author ken
  *
  */
@@ -22,7 +23,8 @@ private PrintWriter out;
 		try {
 			PdfReader reader = new PdfReader(filename);
 			PdfReaderContentParser parser = new PdfReaderContentParser(reader);
-			out = new PrintWriter(new BufferedWriter(new FileWriter("/tmp/output", true)));
+			out = new PrintWriter(new BufferedWriter(new FileWriter(
+					"/tmp/output", true)));
 			TextExtractionStrategy strategy;
 
 			for (int i = 1; i <= reader.getNumberOfPages(); i++) {

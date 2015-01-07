@@ -13,6 +13,7 @@ import com.snowtide.pdf.OutputTarget;
 import com.snowtide.pdf.Page;
 
 /**
+ * 以pdfxstream做為讀取資料用的Library並 逐頁讀取PDF內容.
  * @author ken
  *
  */

@@ -11,6 +11,7 @@ import com.snowtide.pdf.Document;
 import com.snowtide.pdf.OutputTarget;
 
 /**
+ * 以pdfxstream為讀取資料用的Library並一次讀完PDF全部內容.
  * @author ken
  *
  */
