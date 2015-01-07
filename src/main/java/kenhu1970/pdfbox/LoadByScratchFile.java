@@ -7,6 +7,9 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 import org.apache.pdfbox.io.RandomAccessFile;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.util.PDFTextStripper;
@@ -21,14 +24,14 @@ public class LoadByScratchFile {
 private File pdf;	
 private File scratchFile;
 private String scratchFileAccessMode = "rw";
-
 private PrintWriter out;
 private PDDocument doc ;
 
 	private void printoutText(String filename) throws Exception {
+		String scratchFilename = generateScratchFilename();
 		try {
 			pdf = new File(filename);
-			scratchFile = new File("/tmp/scratchfile");
+			scratchFile = new File("/tmp/" + scratchFilename);
 			RandomAccessFile temp = new RandomAccessFile(scratchFile,
 					scratchFileAccessMode);
 			doc = PDDocument.load(pdf, temp);
@@ -42,10 +45,16 @@ private PDDocument doc ;
 			try {
 				out.close();
 				doc.close();
+				scratchFile.delete();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	private String generateScratchFilename() {
+		Calendar cal = GregorianCalendar.getInstance();
+		return ""+cal.getTime().getTime();
 	}
 	
 	public static void main(String[] args) throws Exception {
